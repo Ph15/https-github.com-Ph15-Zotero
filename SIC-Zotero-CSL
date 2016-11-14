@@ -12,7 +12,7 @@
     <category citation-format="note"/>
     <category field="generic-base"/>
     <summary>Style based on ISO 690:2010(F), V1, derived from Mellifluo, Grolimund, Hardegger and Giraud version.</summary>
-    <updated>2016-11-12T00:17:47+00:00</updated>
+    <updated>2016-11-14T17:47:38+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="fr-FR">
@@ -24,7 +24,10 @@
       <term name="accessed">consulté le</term>
       <term name="retrieved">disponible</term>
       <term name="from">à l'adresse</term>
-      <term name="page" form="short">p.</term>
+      <term name="page">
+        <single>p.</single>
+        <multiple>pp.</multiple>
+      </term>
       <term name="cited">op. cit.</term>
     </terms>
   </locale>
@@ -239,10 +242,7 @@
       <text variable="volume" prefix="vol. "/>
       <text variable="issue" prefix="n°"/>
       <date form="text" date-parts="year-month-day" variable="issued"/>
-      <group delimiter=" ">
-        <label variable="locator" form="short"/>
-        <text variable="locator"/>
-      </group>
+      <text variable="locator" prefix="p. "/>
     </group>
   </macro>
   <macro name="publisher">
@@ -292,10 +292,7 @@
         <text variable="number-of-pages" suffix=" p."/>
       </if>
       <else-if type="chapter paper-conference article-newspaper" match="any">
-        <group delimiter="  ">
-          <label variable="page" form="short"/>
-          <text variable="page"/>
-        </group>
+        <text variable="page" prefix="p. "/>
       </else-if>
       <else-if type="report patent" match="any">
         <text variable="page" suffix=" p. "/>
@@ -348,10 +345,7 @@
         <if match="any" position="ibid-with-locator">
           <group delimiter=", " suffix=".">
             <text term="ibid" text-case="capitalize-first" font-style="italic" suffix="."/>
-            <group delimiter=" ">
-              <label variable="locator" form="short"/>
-              <text variable="locator"/>
-            </group>
+            <text variable="locator" prefix="p. "/>
           </group>
         </if>
         <else-if match="any" position="ibid">
@@ -369,10 +363,7 @@
               </else>
             </choose>
             <text term="cited" font-style="italic"/>
-            <group delimiter=" ">
-              <label variable="locator" form="short"/>
-              <text variable="locator"/>
-            </group>
+            <text variable="locator" prefix="p. "/>
           </group>
         </else-if>
         <else>
@@ -387,10 +378,7 @@
                     <text macro="publisher"/>
                   </group>
                   <text macro="year-date"/>
-                  <group delimiter=" ">
-                    <label variable="locator" form="short"/>
-                    <text variable="locator"/>
-                  </group>
+                  <text variable="locator" prefix="p. "/>
                 </group>
               </if>
               <else-if type="article article-journal article-magazine article-newspaper post-weblog webpage motion_picture broadcast song interview speech entry entry-dictionary entry-encyclopedia" match="any">
@@ -477,10 +465,7 @@
               <text macro="title" suffix=". "/>
               <text macro="edition" suffix=". "/>
               <text macro="issue" suffix=". "/>
-              <group delimiter=" ">
-                <label variable="locator" form="short"/>
-                <text variable="locator"/>
-              </group>
+              <text variable="locator"/>
               <group delimiter=" ">
                 <text macro="url" suffix=" "/>
                 <text macro="accessed"/>
